@@ -9,14 +9,12 @@
 
 #include <iostream>
 #include <vector>
-#define INF 0x3f3f3f3f
 using namespace std;
 
 class Graph{
 private:
     int n;
     int **matrix;
-
 public:
     //http://www.cplusplus.com/forum/articles/7459/ was used to understand how to make a variable matrix
     Graph(int x){
@@ -32,8 +30,8 @@ public:
         matrix[j][i] = dist;
     }
     void removeEdge(int i, int j) {
-        matrix[i][j] = -1;
-        matrix[i][j] = -1;
+        matrix[i][j] = 0;
+        matrix[i][j] = 0;
     }
     int distance(int i, int j) {
         return matrix[i][j];
@@ -54,38 +52,39 @@ public:
         return n;
     }
 
-    bool matrixOut(){
+    int **matrixOut(){
         return matrix;
     }
 };
 
-// TODO make this funtion return something (an array or graph)
-// TODO make it print
-void Dijkstra(Graph g, int source) {
-    int dist[g.length()];
+
+// TODO make the distance print nice
+void Dijkstra(Graph g, int source, int* dist, int* parent) {
     int index = 0;
     bool used[g.length()];
 
     for (int i=0; i<g.length(); i++){
-        dist[i] = INF;
+        dist[i] = -1;
         used[i] = false;
     }
 
     dist[source] = 0;
     used[source] = true;
+    parent[source] = 0;
 
     for (int i=0; i<g.length(); i++){
         vector<int> edge = g.outEdges(index);
         for (int ii=0; ii<edge.size(); ii++){
             int u = dist[index] + g.distance(index, edge[ii]);
-            if (u < dist[edge[ii]]){
+            if (u < dist[edge[ii]] || dist[edge[ii]] == -1){
+                parent[edge[ii]] = index;
                 dist[edge[ii]] = dist[index] + g.distance(index, edge[ii]);
             }
         }
-        int min = INF;
+        int min = -1;
         for (int ii=0; ii<g.length(); ii++){
-            if (!used[ii] && dist[ii] != INF){
-                if (dist[ii] < min){
+            if (!used[ii] && dist[ii] != -1){
+                if (dist[ii] < min || min == -1){
                     min = dist[ii];
                     index = ii;
                 }
@@ -93,15 +92,30 @@ void Dijkstra(Graph g, int source) {
         }
         used[index] = true;
     }
+}
+
+void printShortPath(int* parent) {
+    int index = 0;
     for (int i=0; i<9; i++){
-        cout << dist[i] << ' ';
+        cout << i;
+        index = i;
+        do
+        {
+                cout << " <-" << parent[index];
+                index = parent[index];
+        } while (index > 0);
+        cout << endl;
     }
 }
 
 
 int main(int, char**) {
     Graph g(9);
-    g.addEdge(0, 1, 4);
+
+    int dist[g.length()];
+    int parent[g.length()];
+
+    g.addEdge(0,1,4);
     g.addEdge(1,2,8);
     g.addEdge(2,3,7);
     g.addEdge(3,4,9);
@@ -109,7 +123,7 @@ int main(int, char**) {
     g.addEdge(5,6,2);
     g.addEdge(6,7,1);
     g.addEdge(7,8,7);
-    g.addEdge(7,0, 8);
+    g.addEdge(7,0,8);
     g.addEdge(1,7,11);
     g.addEdge(2,5,4);
     g.addEdge(3,5,14);
@@ -117,10 +131,6 @@ int main(int, char**) {
     g.addEdge(6,8,6);
     g.addEdge(0,7,8);
 
-    Dijkstra(g, 0);
-
-    // for (int i=0; i<test.size(); i++) {
-    //     cout << test[i] << ' ';
-    // }
-    cout << endl;
+    Dijkstra(g, 0, dist, parent);
+    printShortPath(parent);
 }
