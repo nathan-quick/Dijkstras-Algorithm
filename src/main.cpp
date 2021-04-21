@@ -49,13 +49,6 @@ public:
         }
         return edges;
     }
-    void inEdges(int i, vector<int> &edges) {
-        for (int j=0; j<n; j++) {
-            if (matrix[j][i]) {
-                edges.push_back(j);
-            }
-        }
-    }
 
     int length(){
         return n;
@@ -66,21 +59,43 @@ public:
     }
 };
 
-
-Graph Dijkstra(Graph g, int source) {
+// TODO make this funtion return something (an array or graph)
+// TODO make it print
+void Dijkstra(Graph g, int source) {
     int dist[g.length()];
+    int index = 0;
     bool used[g.length()];
+
     for (int i=0; i<g.length(); i++){
         dist[i] = INF;
         used[i] = false;
     }
-    dist[source] = 0;
-    for (int i=0; i<g.length(); i++) {
-        vector<int> edge = g.outEdges(i);
-        
-    }
-    
 
+    dist[source] = 0;
+    used[source] = true;
+
+    for (int i=0; i<g.length(); i++){
+        vector<int> edge = g.outEdges(index);
+        for (int ii=0; ii<edge.size(); ii++){
+            int u = dist[index] + g.distance(index, edge[ii]);
+            if (u < dist[edge[ii]]){
+                dist[edge[ii]] = dist[index] + g.distance(index, edge[ii]);
+            }
+        }
+        int min = INF;
+        for (int ii=0; ii<g.length(); ii++){
+            if (!used[ii] && dist[ii] != INF){
+                if (dist[ii] < min){
+                    min = dist[ii];
+                    index = ii;
+                }
+            }
+        }
+        used[index] = true;
+    }
+    for (int i=0; i<9; i++){
+        cout << dist[i] << ' ';
+    }
 }
 
 
@@ -102,8 +117,10 @@ int main(int, char**) {
     g.addEdge(6,8,6);
     g.addEdge(0,7,8);
 
-    for (int i=0; i<g.length(); i++) {
-        cout << g.distance(i, i+1) << ' ';
-    }
+    Dijkstra(g, 0);
+
+    // for (int i=0; i<test.size(); i++) {
+    //     cout << test[i] << ' ';
+    // }
     cout << endl;
 }
