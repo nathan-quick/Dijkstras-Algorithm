@@ -8,6 +8,7 @@
  */
 
 #include <iostream>
+#include <algorithm>
 #include <vector>
 using namespace std;
 
@@ -94,17 +95,33 @@ void Dijkstra(Graph g, int source, int* dist, int* parent) {
     }
 }
 
-void printShortPath(int* parent) {
+void printShortPath(Graph g, int* dist, int* parent) {
     int index = 0;
-    for (int i=0; i<9; i++){
-        cout << i;
+    vector<int> items;
+    for (int i=1; i<g.length(); i++){
+        cout << i << ": " << dist[i] << string(5, ' ');
+        items.clear();
         index = i;
         do
-        {
-                cout << " ← " << parent[index];
+        {       
+                items.push_back(parent[index]);
                 index = parent[index];
         } while (index > 0);
-        cout << endl;
+        reverse(items.begin(),items.end());
+        for (int ii=0; ii<=items.size()-1; ii++){
+            if (ii==0 && dist[i] < 10){
+                cout << ' ';
+            }
+            cout << items[ii] << "->";
+        }
+        cout << i <<endl;
+    }
+}
+
+
+void printDistance(Graph g, int* dist){
+    for (int i=0; i<g.length(); i++){
+        cout << i << ": " << dist[i] << endl;
     }
 }
 
@@ -132,5 +149,6 @@ int main(int, char**) {
     g.addEdge(0,7,8);
 
     Dijkstra(g, 0, dist, parent);
-    printShortPath(parent);
+    printShortPath(g, dist, parent);
+    // printDistance(g, dist);
 }
