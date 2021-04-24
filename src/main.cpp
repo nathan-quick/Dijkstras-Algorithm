@@ -1,9 +1,9 @@
 /**
  * @file main.cpp
- * @brief This is a test of CMake, doxygen, and GitHub.
- * @details This is the long brief at the top of main.cpp.
- * @author Seth McNeill
- * @date 1/28/2021
+ * @brief This is Final Project for CPTR 227.
+ * @details This is implementation of Dijkstra's Algorithm to find the shortest path.
+ * @author Nathan Quick & Brandon Yi
+ * @date 5/5/2021
  * 
  */
 
