@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>aardvark: /home/drseth/CPTR227/doxygen-cmake-github/src/main.cpp Source File</title>
+<title>Dijkstras: /home/brandon/CPTR227/FinalProject/Dijkstras-Algorithm/src/main.cpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">aardvark
-   &#160;<span id="projectnumber">0.3.0</span>
+   <div id="projectname">Dijkstras
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
   </td>
  </tr>
@@ -72,19 +72,165 @@ $(function() {
 <div class="contents">
 <a href="main_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="main_8cpp.html#aa99823a0fc8313c9c32541ce768fb801">   21</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#aa99823a0fc8313c9c32541ce768fb801">add</a>(<span class="keywordtype">int</span> a, <span class="keywordtype">int</span> b) {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">return</span>(a + b);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="classGraph.html">   19</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGraph.html">Graph</a>{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> n; <span class="comment">// Dimension of graph</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">int</span> **matrix;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="main_8cpp.html#a2c3f6775325c30275d11c6abee2db6a0">   26</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#a2c3f6775325c30275d11c6abee2db6a0">main</a>(<span class="keywordtype">int</span>, <span class="keywordtype">char</span>**) {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Hello, world! Ver 2.1\n&quot;</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="comment">//http://www.cplusplus.com/forum/articles/7459/ was used to understand how to make a variable matrix</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classGraph.html#ab2887f9af8e3ff934e3f04b4de4eb894">   31</a></span>&#160;    <a class="code" href="classGraph.html#ab2887f9af8e3ff934e3f04b4de4eb894">Graph</a>(<span class="keywordtype">int</span> x){</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        n = x;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        matrix = <span class="keyword">new</span> <span class="keywordtype">int</span>*[n];</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;n; i++)</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            matrix[i] = <span class="keyword">new</span> <span class="keywordtype">int</span>[n];</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">   45</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j, <span class="keywordtype">int</span> dist) {</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        matrix[i][j] = dist;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        matrix[j][i] = dist;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classGraph.html#aa29945237da0ecad6d8431106edb4830">   56</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGraph.html#aa29945237da0ecad6d8431106edb4830">removeEdge</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j) {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        matrix[i][j] = 0;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        matrix[i][j] = 0;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classGraph.html#aa52ae82070be2939d5ccc65b175b103f">   66</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classGraph.html#aa52ae82070be2939d5ccc65b175b103f">distance</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">int</span> j) {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">return</span> matrix[i][j];</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classGraph.html#a7b624352cb307a14707379e0732a6ddb">   76</a></span>&#160;    vector&lt;int&gt; <a class="code" href="classGraph.html#a7b624352cb307a14707379e0732a6ddb">outEdges</a>(<span class="keywordtype">int</span> i) {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        vector&lt;int&gt; edges;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j=0; j&lt;n; j++) {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">if</span> (matrix[i][j]) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                edges.push_back(j);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">return</span> edges;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="line" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">   91</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">length</a>(){</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">return</span> n;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classGraph.html#a1813e9dfd27dede593330e46b57ff273">  100</a></span>&#160;    <span class="keywordtype">int</span> **<a class="code" href="classGraph.html#a1813e9dfd27dede593330e46b57ff273">matrixOut</a>(){</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">return</span> matrix;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;};</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="main_8cpp.html#a3640be460fd274ef33ae04d054b57b92">  114</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="main_8cpp.html#a3640be460fd274ef33ae04d054b57b92">Dijkstra</a>(<a class="code" href="classGraph.html">Graph</a> g, <span class="keywordtype">int</span> source, <span class="keywordtype">int</span>* dist, <span class="keywordtype">int</span>* parent) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">int</span> index = 0;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">bool</span> used[g.<a class="code" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">length</a>()]; <span class="comment">// An array that stors if the node&#39;s shortest path has already be found</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;g.<a class="code" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">length</a>(); i++){</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        dist[i] = -1;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        used[i] = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    dist[source] = 0; <span class="comment">// The distance from source to source is 0</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    used[source] = <span class="keyword">true</span>; <span class="comment">// Mark source as used</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    parent[source] = 0; <span class="comment">// Source has no path to source</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;g.<a class="code" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">length</a>(); i++){</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        vector&lt;int&gt; edge = g.<a class="code" href="classGraph.html#a7b624352cb307a14707379e0732a6ddb">outEdges</a>(index); <span class="comment">// Stores all of index&#39;s connected nodes</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="comment">// Updates the distances from source to the edge</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii=0; ii&lt;edge.size(); ii++){</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordtype">int</span> u = dist[index] + g.<a class="code" href="classGraph.html#aa52ae82070be2939d5ccc65b175b103f">distance</a>(index, edge[ii]);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">if</span> (u &lt; dist[edge[ii]] || dist[edge[ii]] == -1){</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                parent[edge[ii]] = index;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                dist[edge[ii]] = dist[index] + g.<a class="code" href="classGraph.html#aa52ae82070be2939d5ccc65b175b103f">distance</a>(index, edge[ii]);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="comment">// Reset min</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordtype">int</span> min = -1; <span class="comment">// Stores the smalles distance value</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="comment">// Finds the shortest path of the discovered distances</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii=0; ii&lt;g.<a class="code" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">length</a>(); ii++){</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordflow">if</span> (!used[ii] &amp;&amp; dist[ii] != -1){</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                <span class="keywordflow">if</span> (dist[ii] &lt; min || min == -1){</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    min = dist[ii];</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                    index = ii;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="comment">// Marks shortest node path as used</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        used[index] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="main_8cpp.html#ab5ae5e1f583690f77ca0e22e710dc8b2">  163</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="main_8cpp.html#ab5ae5e1f583690f77ca0e22e710dc8b2">printShortPath</a>(<a class="code" href="classGraph.html">Graph</a> g, <span class="keywordtype">int</span>* dist, <span class="keywordtype">int</span>* parent) {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Distance  Shortest&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot; from 0     path&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;--------------&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordtype">int</span> index = 0;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    vector&lt;int&gt; items;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=1; i&lt;g.<a class="code" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">length</a>(); i++){</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        cout &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; dist[i] &lt;&lt; string(5, <span class="charliteral">&#39; &#39;</span>);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        items.clear();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        index = i;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">do</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        {       </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                items.push_back(parent[index]);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                index = parent[index];</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        } <span class="keywordflow">while</span> (index &gt; 0);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        reverse(items.begin(),items.end());</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii=0; ii&lt;=items.size()-1; ii++){</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">if</span> (ii==0 &amp;&amp; dist[i] &lt; 10){</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                cout &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            cout &lt;&lt; items[ii] &lt;&lt; <span class="stringliteral">&quot;-&gt;&quot;</span>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        cout &lt;&lt; i &lt;&lt;endl;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160; </div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
+<div class="line"><a name="l00190"></a><span class="lineno"><a class="line" href="main_8cpp.html#a2c3f6775325c30275d11c6abee2db6a0">  190</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#a2c3f6775325c30275d11c6abee2db6a0">main</a>(<span class="keywordtype">int</span>, <span class="keywordtype">char</span>**) {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="classGraph.html">Graph</a> g(9);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordtype">int</span> dist[g.<a class="code" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">length</a>()];</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordtype">int</span> parent[g.<a class="code" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">length</a>()];</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(0,1,4);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(1,2,8);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(2,3,7);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(3,4,9);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(4,5,10);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(5,6,2);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(6,7,1);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(7,8,7);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(7,0,8);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(1,7,11);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(2,5,4);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(3,5,14);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(2,8,2);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(6,8,6);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    g.<a class="code" href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">addEdge</a>(0,7,8);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <a class="code" href="main_8cpp.html#a3640be460fd274ef33ae04d054b57b92">Dijkstra</a>(g, 0, dist, parent);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="main_8cpp.html#ab5ae5e1f583690f77ca0e22e710dc8b2">printShortPath</a>(g, dist, parent);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="amain_8cpp_html_a2c3f6775325c30275d11c6abee2db6a0"><div class="ttname"><a href="main_8cpp.html#a2c3f6775325c30275d11c6abee2db6a0">main</a></div><div class="ttdeci">int main(int, char **)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00026">main.cpp:26</a></div></div>
-<div class="ttc" id="amain_8cpp_html_aa99823a0fc8313c9c32541ce768fb801"><div class="ttname"><a href="main_8cpp.html#aa99823a0fc8313c9c32541ce768fb801">add</a></div><div class="ttdeci">int add(int a, int b)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00021">main.cpp:21</a></div></div>
+<div class="ttc" id="amain_8cpp_html_a3640be460fd274ef33ae04d054b57b92"><div class="ttname"><a href="main_8cpp.html#a3640be460fd274ef33ae04d054b57b92">Dijkstra</a></div><div class="ttdeci">void Dijkstra(Graph g, int source, int *dist, int *parent)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00114">main.cpp:114</a></div></div>
+<div class="ttc" id="aclassGraph_html_aa52ae82070be2939d5ccc65b175b103f"><div class="ttname"><a href="classGraph.html#aa52ae82070be2939d5ccc65b175b103f">Graph::distance</a></div><div class="ttdeci">int distance(int i, int j)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00066">main.cpp:66</a></div></div>
+<div class="ttc" id="aclassGraph_html_ab2887f9af8e3ff934e3f04b4de4eb894"><div class="ttname"><a href="classGraph.html#ab2887f9af8e3ff934e3f04b4de4eb894">Graph::Graph</a></div><div class="ttdeci">Graph(int x)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00031">main.cpp:31</a></div></div>
+<div class="ttc" id="aclassGraph_html_a82a49c775565df8dfd4c01e7af7d50bd"><div class="ttname"><a href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">Graph::length</a></div><div class="ttdeci">int length()</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00091">main.cpp:91</a></div></div>
+<div class="ttc" id="aclassGraph_html_a1813e9dfd27dede593330e46b57ff273"><div class="ttname"><a href="classGraph.html#a1813e9dfd27dede593330e46b57ff273">Graph::matrixOut</a></div><div class="ttdeci">int ** matrixOut()</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00100">main.cpp:100</a></div></div>
+<div class="ttc" id="aclassGraph_html_aa29945237da0ecad6d8431106edb4830"><div class="ttname"><a href="classGraph.html#aa29945237da0ecad6d8431106edb4830">Graph::removeEdge</a></div><div class="ttdeci">void removeEdge(int i, int j)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00056">main.cpp:56</a></div></div>
+<div class="ttc" id="amain_8cpp_html_a2c3f6775325c30275d11c6abee2db6a0"><div class="ttname"><a href="main_8cpp.html#a2c3f6775325c30275d11c6abee2db6a0">main</a></div><div class="ttdeci">int main(int, char **)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00190">main.cpp:190</a></div></div>
+<div class="ttc" id="aclassGraph_html"><div class="ttname"><a href="classGraph.html">Graph</a></div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00019">main.cpp:19</a></div></div>
+<div class="ttc" id="amain_8cpp_html_ab5ae5e1f583690f77ca0e22e710dc8b2"><div class="ttname"><a href="main_8cpp.html#ab5ae5e1f583690f77ca0e22e710dc8b2">printShortPath</a></div><div class="ttdeci">void printShortPath(Graph g, int *dist, int *parent)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00163">main.cpp:163</a></div></div>
+<div class="ttc" id="aclassGraph_html_a760922a1057d71440d3cd5737ed3fc63"><div class="ttname"><a href="classGraph.html#a760922a1057d71440d3cd5737ed3fc63">Graph::addEdge</a></div><div class="ttdeci">void addEdge(int i, int j, int dist)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00045">main.cpp:45</a></div></div>
+<div class="ttc" id="aclassGraph_html_a7b624352cb307a14707379e0732a6ddb"><div class="ttname"><a href="classGraph.html#a7b624352cb307a14707379e0732a6ddb">Graph::outEdges</a></div><div class="ttdeci">vector&lt; int &gt; outEdges(int i)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00076">main.cpp:76</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -162,8 +162,8 @@ void Dijkstra(Graph g, int source, int* dist, int* parent) {
  */
 void printShortPath(Graph g, int* dist, int* parent) {
     cout << "Distance  Shortest" << endl;
-    cout << " from 0     path" << endl;
-    cout << "--------------" << endl;
+    cout << "  from 0      path" << endl;
+    cout << "------------------" << endl;
     int index = 0;
     vector<int> items;
     for (int i=1; i<g.length(); i++){
@@ -180,7 +180,7 @@ void printShortPath(Graph g, int* dist, int* parent) {
             if (ii==0 && dist[i] < 10){
                 cout << ' ';
             }
-            cout << items[ii] << "->";
+            cout << items[ii] << " → ";
         }
         cout << i <<endl;
     }
