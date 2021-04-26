@@ -12,11 +12,21 @@
 #include <vector>
 using namespace std;
 
+/**
+ * This class creates an integer matrix graph.
+ * 
+ */
 class Graph{
 private:
-    int n;
+    int n; // Dimension of graph
     int **matrix;
 public:
+
+    /**
+     * Graph constructor
+     * 
+     * @param x The dimensions of the graph
+     */
     //http://www.cplusplus.com/forum/articles/7459/ was used to understand how to make a variable matrix
     Graph(int x){
         n = x;
@@ -26,19 +36,43 @@ public:
 
     }
 
+    /**
+     * Adds an edge to the graph by setting [i][j] to the distance from the nodes
+     * 
+     * @param i Initial node
+     * @param j Node to connect
+     */
     void addEdge(int i, int j, int dist) {
         matrix[i][j] = dist;
         matrix[j][i] = dist;
     }
+
+    /**
+     * Removes an edge from the graph by setting [i][j] to 0
+     * 
+     * @param i Initial node
+     * @param j Connected node
+     */
     void removeEdge(int i, int j) {
         matrix[i][j] = 0;
         matrix[i][j] = 0;
     }
+
+    /** Finds distance by checking the number stored in [i][j]
+     * 
+     * @param i Initial node
+     * @param j A connected node
+     */
     int distance(int i, int j) {
         return matrix[i][j];
     }
 
-
+    /** Finds all nodes connected to i by checking all of it's rows
+     * 
+     * @param i Initial node
+     * 
+     * @return A vector of all connected nodes
+     */
     vector<int> outEdges(int i) {
         vector<int> edges;
         for (int j=0; j<n; j++) {
@@ -49,32 +83,52 @@ public:
         return edges;
     }
 
+    /**
+     * Returns the length by returning n
+     * 
+     * @return lenght of graph
+     */
     int length(){
         return n;
     }
 
+    /**
+     * Retruns the matrix
+     * 
+     * @return the matrix
+     */
     int **matrixOut(){
         return matrix;
     }
 };
 
 
-// TODO make the distance print nice
+/**
+ * Finds the shortest path in a graph using Dijkstras algorithm
+ * 
+ * @param g The graph
+ * @param source Initial node
+ * @param dist An empty array with the same size as g to store distance values
+ * @param parent An empty array with the same size as g to store path values
+ */
 void Dijkstra(Graph g, int source, int* dist, int* parent) {
     int index = 0;
-    bool used[g.length()];
+    bool used[g.length()]; // An array that stors if the node's shortest path has already be found
 
     for (int i=0; i<g.length(); i++){
         dist[i] = -1;
         used[i] = false;
     }
 
-    dist[source] = 0;
-    used[source] = true;
-    parent[source] = 0;
+    dist[source] = 0; // The distance from source to source is 0
+    used[source] = true; // Mark source as used
+    parent[source] = 0; // Source has no path to source
 
     for (int i=0; i<g.length(); i++){
-        vector<int> edge = g.outEdges(index);
+
+        vector<int> edge = g.outEdges(index); // Stores all of index's connected nodes
+
+        // Updates the distances from source to the edge
         for (int ii=0; ii<edge.size(); ii++){
             int u = dist[index] + g.distance(index, edge[ii]);
             if (u < dist[edge[ii]] || dist[edge[ii]] == -1){
@@ -82,7 +136,10 @@ void Dijkstra(Graph g, int source, int* dist, int* parent) {
                 dist[edge[ii]] = dist[index] + g.distance(index, edge[ii]);
             }
         }
-        int min = -1;
+        // Reset min
+        int min = -1; // Stores the smalles distance value
+
+        // Finds the shortest path of the discovered distances
         for (int ii=0; ii<g.length(); ii++){
             if (!used[ii] && dist[ii] != -1){
                 if (dist[ii] < min || min == -1){
@@ -91,11 +148,22 @@ void Dijkstra(Graph g, int source, int* dist, int* parent) {
                 }
             }
         }
+        // Marks shortest node path as used
         used[index] = true;
     }
 }
 
+/**
+ * Prints the distances and shortest path of each node from source
+ * 
+ * @param g The graph
+ * @param dist The list of smallest distances
+ * @param parent A list that hold path info
+ */
 void printShortPath(Graph g, int* dist, int* parent) {
+    cout << "Distance  Shortest" << endl;
+    cout << " from 0     path" << endl;
+    cout << "--------------" << endl;
     int index = 0;
     vector<int> items;
     for (int i=1; i<g.length(); i++){
@@ -115,13 +183,6 @@ void printShortPath(Graph g, int* dist, int* parent) {
             cout << items[ii] << "->";
         }
         cout << i <<endl;
-    }
-}
-
-
-void printDistance(Graph g, int* dist){
-    for (int i=0; i<g.length(); i++){
-        cout << i << ": " << dist[i] << endl;
     }
 }
 
@@ -150,5 +211,4 @@ int main(int, char**) {
 
     Dijkstra(g, 0, dist, parent);
     printShortPath(g, dist, parent);
-    // printDistance(g, dist);
 }
