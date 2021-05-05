@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>aardvark: /home/drseth/CPTR227/doxygen-cmake-github/src/main.cpp File Reference</title>
+<title>Dijkstras: /home/brandon/CPTR227/FinalProject/Dijkstras-Algorithm/src/main.cpp File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,8 +21,8 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">aardvark
-   &#160;<span id="projectnumber">0.3.0</span>
+   <div id="projectname">Dijkstras
+   &#160;<span id="projectnumber">0.1.0</span>
    </div>
   </td>
  </tr>
@@ -67,58 +67,82 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">main.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is a test of CMake, doxygen, and GitHub.  
+<p>This is Final Project for CPTR 227.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for main.cpp:</div>
 <div class="dyncontent">
-<div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#_2home_2drseth_2CPTR227_2doxygen-cmake-github_2src_2main_8cpp" alt=""/></div>
-<map name="_2home_2drseth_2CPTR227_2doxygen-cmake-github_2src_2main_8cpp" id="_2home_2drseth_2CPTR227_2doxygen-cmake-github_2src_2main_8cpp">
-<area shape="rect" title="This is a test of CMake, doxygen, and GitHub." alt="" coords="5,5,181,61"/>
-<area shape="rect" title=" " alt="" coords="53,109,133,136"/>
+<div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#_2home_2brandon_2CPTR227_2FinalProject_2Dijkstras-Algorithm_2src_2main_8cpp" alt=""/></div>
+<map name="_2home_2brandon_2CPTR227_2FinalProject_2Dijkstras-Algorithm_2src_2main_8cpp" id="_2home_2brandon_2CPTR227_2FinalProject_2Dijkstras-Algorithm_2src_2main_8cpp">
+<area shape="rect" title="This is Final Project for CPTR 227." alt="" coords="61,5,243,61"/>
+<area shape="rect" title=" " alt="" coords="5,109,85,136"/>
+<area shape="rect" title=" " alt="" coords="109,109,195,136"/>
+<area shape="rect" title=" " alt="" coords="219,109,282,136"/>
 </map>
 </div>
 </div>
 <p><a href="main_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGraph.html">Graph</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa99823a0fc8313c9c32541ce768fb801"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aa99823a0fc8313c9c32541ce768fb801">add</a> (int a, int b)</td></tr>
-<tr class="separator:aa99823a0fc8313c9c32541ce768fb801"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3640be460fd274ef33ae04d054b57b92"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a3640be460fd274ef33ae04d054b57b92">Dijkstra</a> (<a class="el" href="classGraph.html">Graph</a> g, int source, int *dist, int *parent)</td></tr>
+<tr class="separator:a3640be460fd274ef33ae04d054b57b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5ae5e1f583690f77ca0e22e710dc8b2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ab5ae5e1f583690f77ca0e22e710dc8b2">printShortPath</a> (<a class="el" href="classGraph.html">Graph</a> g, int *dist, int *parent)</td></tr>
+<tr class="separator:ab5ae5e1f583690f77ca0e22e710dc8b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c3f6775325c30275d11c6abee2db6a0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a2c3f6775325c30275d11c6abee2db6a0">main</a> (int, char **)</td></tr>
 <tr class="separator:a2c3f6775325c30275d11c6abee2db6a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This is a test of CMake, doxygen, and GitHub. </p>
-<p>This is the long brief at the top of <a class="el" href="main_8cpp.html" title="This is a test of CMake, doxygen, and GitHub.">main.cpp</a>. </p><dl class="section author"><dt>Author</dt><dd>Seth McNeill </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>1/28/2021 </dd></dl>
+<div class="textblock"><p>This is Final Project for CPTR 227. </p>
+<p>This is implementation of Dijkstra's Algorithm to find the shortest path. </p><dl class="section author"><dt>Author</dt><dd>Nathan Quick &amp; Brandon Yi </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>5/5/2021 </dd></dl>
 
 <p class="definition">Definition in file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a id="aa99823a0fc8313c9c32541ce768fb801"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa99823a0fc8313c9c32541ce768fb801">&#9670;&nbsp;</a></span>add()</h2>
+<a id="a3640be460fd274ef33ae04d054b57b92"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3640be460fd274ef33ae04d054b57b92">&#9670;&nbsp;</a></span>Dijkstra()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int add </td>
+          <td class="memname">void Dijkstra </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>a</em>, </td>
+          <td class="paramtype"><a class="el" href="classGraph.html">Graph</a>&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>b</em>&#160;</td>
+          <td class="paramname"><em>source</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>dist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -127,20 +151,59 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Add two integers (brief)</p>
-<p>Adds a and b, two integers (long description) </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Finds the shortest path in a graph using Dijkstras algorithm</p>
+<dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>integer </td></tr>
-    <tr><td class="paramname">b</td><td>integer </td></tr>
+    <tr><td class="paramname">g</td><td>The graph </td></tr>
+    <tr><td class="paramname">source</td><td>Initial node </td></tr>
+    <tr><td class="paramname">dist</td><td>An empty array with the same size as g to store distance values </td></tr>
+    <tr><td class="paramname">parent</td><td>An empty array with the same size as g to store path values </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>integer sum of a and b </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00021">21</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;                      {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">return</span>(a + b);</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00114">114</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                                                           {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <span class="keywordtype">int</span> index = 0;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <span class="keywordtype">bool</span> used[g.<a class="code" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">length</a>()]; <span class="comment">// An array that stors if the node&#39;s shortest path has already be found</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;g.<a class="code" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">length</a>(); i++){</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        dist[i] = -1;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        used[i] = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    }</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    dist[source] = 0; <span class="comment">// The distance from source to source is 0</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    used[source] = <span class="keyword">true</span>; <span class="comment">// Mark source as used</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    parent[source] = 0; <span class="comment">// Source has no path to source</span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;g.<a class="code" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">length</a>(); i++){</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        vector&lt;int&gt; edge = g.<a class="code" href="classGraph.html#a7b624352cb307a14707379e0732a6ddb">outEdges</a>(index); <span class="comment">// Stores all of index&#39;s connected nodes</span></div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="comment">// Updates the distances from source to the edge</span></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii=0; ii&lt;edge.size(); ii++){</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;            <span class="keywordtype">int</span> u = dist[index] + g.<a class="code" href="classGraph.html#aa52ae82070be2939d5ccc65b175b103f">distance</a>(index, edge[ii]);</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;            <span class="keywordflow">if</span> (u &lt; dist[edge[ii]] || dist[edge[ii]] == -1){</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                parent[edge[ii]] = index;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;                dist[edge[ii]] = dist[index] + g.<a class="code" href="classGraph.html#aa52ae82070be2939d5ccc65b175b103f">distance</a>(index, edge[ii]);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;            }</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        }</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        <span class="comment">// Reset min</span></div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordtype">int</span> min = -1; <span class="comment">// Stores the smalles distance value</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        <span class="comment">// Finds the shortest path of the discovered distances</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii=0; ii&lt;g.<a class="code" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">length</a>(); ii++){</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;            <span class="keywordflow">if</span> (!used[ii] &amp;&amp; dist[ii] != -1){</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;                <span class="keywordflow">if</span> (dist[ii] &lt; min || min == -1){</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                    min = dist[ii];</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;                    index = ii;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;                }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;            }</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;        }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="comment">// Marks shortest node path as used</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        used[index] = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -170,14 +233,112 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00026">26</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;                      {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Hello, world! Ver 2.1\n&quot;</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00190">190</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;                      {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <a class="code" href="classGraph.html">Graph</a> g(9);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordtype">int</span> dist[g.length()];</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordtype">int</span> parent[g.length()];</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; </div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    g.addEdge(0,1,4);</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    g.addEdge(1,2,8);</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    g.addEdge(2,3,7);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    g.addEdge(3,4,9);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    g.addEdge(4,5,10);</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    g.addEdge(5,6,2);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    g.addEdge(6,7,1);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    g.addEdge(7,8,7);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    g.addEdge(7,0,8);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    g.addEdge(1,7,11);</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    g.addEdge(2,5,4);</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    g.addEdge(3,5,14);</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    g.addEdge(2,8,2);</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    g.addEdge(6,8,6);</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    g.addEdge(0,7,8);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <a class="code" href="main_8cpp.html#a3640be460fd274ef33ae04d054b57b92">Dijkstra</a>(g, 0, dist, parent);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <a class="code" href="main_8cpp.html#ab5ae5e1f583690f77ca0e22e710dc8b2">printShortPath</a>(g, dist, parent);</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab5ae5e1f583690f77ca0e22e710dc8b2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5ae5e1f583690f77ca0e22e710dc8b2">&#9670;&nbsp;</a></span>printShortPath()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printShortPath </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classGraph.html">Graph</a>&#160;</td>
+          <td class="paramname"><em>g</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>dist</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>parent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Prints the distances and shortest path of each node from source</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">g</td><td>The graph </td></tr>
+    <tr><td class="paramname">dist</td><td>The list of smallest distances </td></tr>
+    <tr><td class="paramname">parent</td><td>A list that hold path info </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="main_8cpp_source.html#l00163">163</a> of file <a class="el" href="main_8cpp_source.html">main.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;                                                     {</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Distance  Shortest&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;  from 0      path&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;------------------&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordtype">int</span> index = 0;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    vector&lt;int&gt; items;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=1; i&lt;g.<a class="code" href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">length</a>(); i++){</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        cout &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; dist[i] &lt;&lt; string(5, <span class="charliteral">&#39; &#39;</span>);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        items.clear();</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        index = i;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">do</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        {       </div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                items.push_back(parent[index]);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                index = parent[index];</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        } <span class="keywordflow">while</span> (index &gt; 0);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        reverse(items.begin(),items.end());</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii=0; ii&lt;=items.size()-1; ii++){</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;            <span class="keywordflow">if</span> (ii==0 &amp;&amp; dist[i] &lt; 10){</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;                cout &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;            }</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;            cout &lt;&lt; items[ii] &lt;&lt; <span class="stringliteral">&quot; → &quot;</span>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        }</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        cout &lt;&lt; i &lt;&lt;endl;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->
+<div class="ttc" id="amain_8cpp_html_a3640be460fd274ef33ae04d054b57b92"><div class="ttname"><a href="main_8cpp.html#a3640be460fd274ef33ae04d054b57b92">Dijkstra</a></div><div class="ttdeci">void Dijkstra(Graph g, int source, int *dist, int *parent)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00114">main.cpp:114</a></div></div>
+<div class="ttc" id="aclassGraph_html_aa52ae82070be2939d5ccc65b175b103f"><div class="ttname"><a href="classGraph.html#aa52ae82070be2939d5ccc65b175b103f">Graph::distance</a></div><div class="ttdeci">int distance(int i, int j)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00066">main.cpp:66</a></div></div>
+<div class="ttc" id="aclassGraph_html_a82a49c775565df8dfd4c01e7af7d50bd"><div class="ttname"><a href="classGraph.html#a82a49c775565df8dfd4c01e7af7d50bd">Graph::length</a></div><div class="ttdeci">int length()</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00091">main.cpp:91</a></div></div>
+<div class="ttc" id="aclassGraph_html"><div class="ttname"><a href="classGraph.html">Graph</a></div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00019">main.cpp:19</a></div></div>
+<div class="ttc" id="amain_8cpp_html_ab5ae5e1f583690f77ca0e22e710dc8b2"><div class="ttname"><a href="main_8cpp.html#ab5ae5e1f583690f77ca0e22e710dc8b2">printShortPath</a></div><div class="ttdeci">void printShortPath(Graph g, int *dist, int *parent)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00163">main.cpp:163</a></div></div>
+<div class="ttc" id="aclassGraph_html_a7b624352cb307a14707379e0732a6ddb"><div class="ttname"><a href="classGraph.html#a7b624352cb307a14707379e0732a6ddb">Graph::outEdges</a></div><div class="ttdeci">vector&lt; int &gt; outEdges(int i)</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00076">main.cpp:76</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">
